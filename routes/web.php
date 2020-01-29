@@ -113,7 +113,66 @@ Route::get('/many-to-many', function () {
 });
 
 Route::get('/has-one-through', function () {
+    App\History::truncate();
+    App\User::truncate();
+    App\Supplier::truncate();
+
+    // will create a history, user, & supplier row... see HistoryFactory
+    $history = factory(App\History::class)->create();
+
+    $supplier = $history->user->supplier;
+
+    dump(
+        $supplier->userHistory
+    );
     return 'done';
+
+//     php artisan tinker
+    // Psy Shell v0.9.12 (PHP 7.3.9 — cli) by Justin Hileman
+    // >>> use App\History;
+    // >>> $history=History::find(1)->first();
+    // => App\History {#3163
+    //      id: 1,
+    //      user_id: 1,
+    //      created_at: "2020-01-28 22:50:36",
+    //      updated_at: "2020-01-28 22:50:36",
+    //    }
+    // >>> $history->user
+    // => App\User {#3161
+    //      id: 1,
+    //      name: "Dr. Lawrence Grady",
+    //      email: "ecollier@example.com",
+    //      email_verified_at: "2020-01-28 22:50:36",
+    //      created_at: "2020-01-28 22:50:36",
+    //      updated_at: "2020-01-28 22:50:36",
+    //      supplier_id: 1,
+    //    }
+    // >>> $user = $history->user;
+    // => App\User {#3161
+    //      id: 1,
+    //      name: "Dr. Lawrence Grady",
+    //      email: "ecollier@example.com",
+    //      email_verified_at: "2020-01-28 22:50:36",
+    //      created_at: "2020-01-28 22:50:36",
+    //      updated_at: "2020-01-28 22:50:36",
+    //      supplier_id: 1,
+    //    }
+    // >>> $supplier->userHistory;
+    // PHP Notice:  Undefined variable: supplier in /Users/richardottinger/Documents/projects/relationship-typeseval()'d code on line 1
+    // >>> $supplier=$user->supplier;;
+    // => App\Supplier {#3166
+    //      id: 1,
+    //      created_at: "2020-01-28 22:50:36",
+    //      updated_at: "2020-01-28 22:50:36",
+    //    }
+    // >>> $supplier->userHistory;
+    // => App\History {#3185
+    //      id: 1,
+    //      user_id: 1,
+    //      created_at: "2020-01-28 22:50:36",
+    //      updated_at: "2020-01-28 22:50:36",
+    //      laravel_through_key: 1,
+    //    }
 });
 
 Route::get('/has-many-through', function () {

@@ -59,4 +59,12 @@ class User extends Authenticatable {
         return $this->belongsToMany('App\Role')->withTimestamps();
         // return $this->belongsToMany('App\Role')->withPivot('column1', 'column2'); if pivot table contains extra columns
     }
+
+    public function history() {
+        return $this->hasOne('App\History');
+    }
+
+    public function supplier() {
+        return $this->belongsTo('App\Supplier');
+    }
 }
