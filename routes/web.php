@@ -38,6 +38,10 @@ Route::get('/collection-chunk', 'CollectionController@chunk');
  *             then use the relationships to output related data
  */
 
+Route::get('/links', function () {
+    return view('relationships.links');
+});
+
 Route::get('/one-to-one', function () {
     App\Phone::truncate();
     App\User::truncate();
