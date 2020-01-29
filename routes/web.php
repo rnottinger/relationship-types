@@ -49,9 +49,9 @@ Route::get('/one-to-one', function () {
     // create a user then create a phone and relate it to the user ... see UserFactory
     $user = factory(App\User::class)->create();
     // $phone = App\User::find(1)->phone;
-    $phone = $user->phone;
+    $phone = $user->phone; // use the phone() method hasOne relationship on the User model
     dump($phone);
-    dump($user);
+    dump($phone->user); // use the inverse of the hasOne... user() method belongTo() on the Post model
 
     return 'done';
 });
@@ -75,9 +75,10 @@ Route::get('/one-to-many', function () {
     // echo $comment->post->title;
 
     foreach ($posts as $post) {
+        dump($post->comments); // use the hasMany() relationship on the Post model
         foreach ($post->comments as $comment) {
             dump($comment);
-            dump($comment->post->title);
+            dump($comment->post->title); // use the inverse of the hasMany ... post() method belongsTo() relationship on the Comment Model to access the 'title' attribute on the Post Model
         }
     }
 
@@ -127,13 +128,18 @@ Route::get('/has-one-through', function () {
     $supplier = $history->user->supplier;
 
     dump(
-        $supplier->userHistory
+        $supplier->userHistory// use the userHistory() method hasOneThrough relationship on the Supplier Model
     );
     return 'done';
 
-//     php artisan tinker
+    // php artisan tinker
     // Psy Shell v0.9.12 (PHP 7.3.9 — cli) by Justin Hileman
+    //
     // >>> use App\History;
+    //
+    //
+    //
+    //
     // >>> $history=History::find(1)->first();
     // => App\History {#3163
     //      id: 1,
@@ -141,6 +147,10 @@ Route::get('/has-one-through', function () {
     //      created_at: "2020-01-28 22:50:36",
     //      updated_at: "2020-01-28 22:50:36",
     //    }
+    //
+    //
+    //
+    //
     // >>> $history->user
     // => App\User {#3161
     //      id: 1,
@@ -151,6 +161,9 @@ Route::get('/has-one-through', function () {
     //      updated_at: "2020-01-28 22:50:36",
     //      supplier_id: 1,
     //    }
+    //
+    //
+    //
     // >>> $user = $history->user;
     // => App\User {#3161
     //      id: 1,
@@ -161,14 +174,21 @@ Route::get('/has-one-through', function () {
     //      updated_at: "2020-01-28 22:50:36",
     //      supplier_id: 1,
     //    }
-    // >>> $supplier->userHistory;
-    // PHP Notice:  Undefined variable: supplier in /Users/richardottinger/Documents/projects/relationship-typeseval()'d code on line 1
+    //
+    //
+    //
+    //
+    //
     // >>> $supplier=$user->supplier;;
     // => App\Supplier {#3166
     //      id: 1,
     //      created_at: "2020-01-28 22:50:36",
     //      updated_at: "2020-01-28 22:50:36",
     //    }
+    //
+    //
+    //
+    //
     // >>> $supplier->userHistory;
     // => App\History {#3185
     //      id: 1,
@@ -180,6 +200,24 @@ Route::get('/has-one-through', function () {
 });
 
 Route::get('/has-many-through', function () {
+    App\User::truncate();
+    App\Post::truncate();
+    App\Country::truncate();
+
+    $users = factory(App\User::class, 3)
+        ->create()
+        ->each(function ($user) {
+            $user->posts()->createMany(
+                factory(App\Post::class, 5)->make()->toArray()
+            );
+        });
+    foreach ($users as $user) {
+        $country = $user->country;
+        dump(
+            $country->posts// use the posts() method hasManyThrough relation on the Country model
+        );
+    }
+
     return 'done';
 });
 

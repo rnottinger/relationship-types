@@ -67,4 +67,19 @@ class User extends Authenticatable {
     public function supplier() {
         return $this->belongsTo('App\Supplier');
     }
+
+    public function country() {
+        return $this->belongsTo('App\Country');
+    }
+
+    public function posts() {
+        return $this->hasMany('App\Post');
+    }
+
+    /**
+     * Get the user's image.
+     */
+    public function image() {
+        return $this->morphOne('App\Image', 'imageable');
+    }
 }
