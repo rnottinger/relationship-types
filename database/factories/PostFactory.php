@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 $factory->define(App\Post::class, function (Faker $faker) {
     return [
         'title' => $faker->word(1),
-        'user_id' => null,
+        // 'user_id' => null   // pass it foreign key into the factory helper instead
     ];
 });

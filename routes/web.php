@@ -221,8 +221,13 @@ Route::get('/has-many-through', function () {
     return 'done';
 });
 
+// $users = factory(App\User::class, 3)->create()->each(function ($user) { $user->posts()->createMany( factory(App\Post::class, 5)->make()->toArray() );  });
+
 // Polymorphic Relationships https://laravel.com/docs/master/eloquent-relationships#polymorphic-relationships
 Route::get('/polymorphic-one-to-one', function () {
+    // the table structure and model structure (relationship methods) have been setup
+    // $post = factory(User::class)->create([]);
+
     return 'done';
 });
 
