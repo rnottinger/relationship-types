@@ -2,7 +2,6 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -17,7 +16,7 @@ use Illuminate\Support\Str;
 |
  */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(App\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
@@ -27,8 +26,4 @@ $factory->define(User::class, function (Faker $faker) {
         'supplier_id' => factory(App\Supplier::class),
         'country_id' => factory(App\Country::class),
     ];
-});
-
-$factory->afterCreating(App\User::class, function ($user, $faker) {
-    $user->phone()->save(factory(App\Phone::class)->make());
 });

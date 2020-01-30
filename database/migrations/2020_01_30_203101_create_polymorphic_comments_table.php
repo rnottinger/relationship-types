@@ -4,17 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddBodyCommentableIdCommentableTypeToCommentsTable extends Migration {
+class CreatePolymorphicCommentsTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up() {
-        Schema::table('comments', function (Blueprint $table) {
+        // I already used comments table when demonstrating the one-to-many relationship
+        // so I will demonstrate this polymorphic one to many relationship using a different table name
+        Schema::create('polymorphic_comments', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->text('body')->nullable();
             $table->bigInteger('commentable_id')->nullable();
             $table->string('commentable_type')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -24,10 +28,6 @@ class AddBodyCommentableIdCommentableTypeToCommentsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::table('comments', function (Blueprint $table) {
-            $table->dropColumn('body');
-            $table->dropColumn('commentable_id');
-            $table->dropColumn('commentable_type');
-        });
+        Schema::dropIfExists('polymorphic_comments');
     }
 }

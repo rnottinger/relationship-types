@@ -21,4 +21,11 @@ class Post extends Model {
     public function image() {
         return $this->morphOne('App\Image', 'imageable');
     }
+
+    /**
+     * Get all of the post's comments.
+     */
+    public function polymorphicComments() {
+        return $this->morphMany('App\PolymorphicComment', 'commentable');
+    }
 }

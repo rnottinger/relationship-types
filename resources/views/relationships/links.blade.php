@@ -9,7 +9,6 @@
 	<div>
 		<p><a href="{{url("/one-to-one")}}">one-to-one</a></p>
 		<p><a href="{{url("/one-to-many")}}">one-to-many</a></p>
-		<p><a href="{{url("/one-to-many-inverse")}}">one-to-many (inverse)</a></p>
 		<p><a href="{{url("/many-to-many")}}">many-to-many</a></p>
 
 		<p><a href="{{url("/has-one-through")}}">has-one-through</a></p>

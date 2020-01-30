@@ -45,11 +45,12 @@ Route::get('/links', function () {
 Route::get('/one-to-one', function () {
     App\Phone::truncate();
     App\User::truncate();
+    App\Country::truncate();
+    App\Supplier::truncate();
 
-    // create a user then create a phone and relate it to the user ... see UserFactory
-    $user = factory(App\User::class)->create();
+    $phone = factory(App\Phone::class)->create();
     // $phone = App\User::find(1)->phone;
-    $phone = $user->phone; // use the phone() method hasOne relationship on the User model
+    // $phone = $user->phone; // use the phone() method hasOne relationship on the User model
     dump($phone);
     dump($phone->user); // use the inverse of the hasOne... user() method belongTo() on the Post model
 
@@ -74,11 +75,14 @@ Route::get('/one-to-many', function () {
     // $comment = App\Comment::find(1);
     // echo $comment->post->title;
 
+    dump($posts);
     foreach ($posts as $post) {
-        dump($post->comments); // use the hasMany() relationship on the Post model
+        dump($post);
+        // dump($post->comments); // use the hasMany() relationship on the Post model
         foreach ($post->comments as $comment) {
+            dump($comment->post->id);
             dump($comment);
-            dump($comment->post->title); // use the inverse of the hasMany ... post() method belongsTo() relationship on the Comment Model to access the 'title' attribute on the Post Model
+            // dump($comment->post->title); // use the inverse of the hasMany ... post() method belongsTo() relationship on the Comment Model to access the 'title' attribute on the Post Model
         }
     }
 
@@ -89,18 +93,18 @@ Route::get('/many-to-many', function () {
     App\RoleUser::truncate();
     App\Role::truncate();
     App\User::truncate();
+    App\Country::truncate();
+    App\Supplier::truncate();
 
     // Populate roles
-    factory(App\Role::class, 20)->create();
+    $roles = factory(App\Role::class, 20)->create();
 
     // Populate users
     $users = factory(App\User::class, 50)->create();
 
     // Get all the roles attaching up to 3 random roles to each user
-    $roles = App\Role::all();
-
     // Populate the pivot table
-    App\User::all()->each(function ($user) use ($roles) {
+    $users->each(function ($user) use ($roles) {
         $user->roles()->attach(
             $roles->random(rand(1, 3))->pluck('id')->toArray()
         );
@@ -108,9 +112,7 @@ Route::get('/many-to-many', function () {
 
     foreach ($users as $user) {
         foreach ($user->roles as $role) {
-            // dump($role->pivot->created_at);
-            dump($role->pivot);
-            dump($role);
+            dump($role->pivot->created_at);
         }
     }
 
@@ -120,9 +122,10 @@ Route::get('/many-to-many', function () {
 Route::get('/has-one-through', function () {
     App\History::truncate();
     App\User::truncate();
+    App\Country::truncate();
     App\Supplier::truncate();
 
-    // will create a history, user, & supplier row... see HistoryFactory
+    // will create a history, user, country, & supplier row...
     $history = factory(App\History::class)->create();
 
     $supplier = $history->user->supplier;
@@ -203,6 +206,7 @@ Route::get('/has-many-through', function () {
     App\User::truncate();
     App\Post::truncate();
     App\Country::truncate();
+    App\Supplier::truncate();
 
     $users = factory(App\User::class, 3)
         ->create()
@@ -225,13 +229,75 @@ Route::get('/has-many-through', function () {
 
 // Polymorphic Relationships https://laravel.com/docs/master/eloquent-relationships#polymorphic-relationships
 Route::get('/polymorphic-one-to-one', function () {
+    App\User::truncate();
+    App\Country::truncate();
+    App\Supplier::truncate();
+    App\Post::truncate();
+    App\Image::truncate();
+
     // the table structure and model structure (relationship methods) have been setup
-    // $post = factory(User::class)->create([]);
+
+    $image = factory(App\Image::class, 20)->create();
+
+    $post = App\Post::find(1);
+    $image = $post->image; // use the image() method morphOne relationship to retrieve the image for a post
+    dump($image);
+
+    $image = App\Image::find(1);
+    $imageable = $image->imageable;
+    // will return either a Post or User instance
+    // depending on which type of model owns the image
+
+    dump($imageable);
 
     return 'done';
 });
 
 Route::get('/polymorphic-one-to-many', function () {
+    App\PolymorphicComment::truncate();
+    App\User::truncate();
+    App\Country::truncate();
+    App\Supplier::truncate();
+    App\Post::truncate();
+    App\Video::truncate();
+    // create a post
+    // then create many comments for that post
+
+    $posts = factory(App\Post::class, 3)
+        ->create()
+        ->each(function ($post) {
+            $post->polymorphicComments()
+                ->createMany(
+                    factory(App\PolymorphicComment::class, 5)->make()->toArray()
+                );
+        });
+
+    //
+    // create a video
+    // then create many comments for that video
+    //
+    $videos = factory(App\Video::class, 3)
+        ->create()
+        ->each(function ($video) {
+            $video->polymorphicComments()
+                ->createMany(
+                    factory(App\PolymorphicComment::class, 5)->make()->toArray()
+                );
+        });
+
+    dump($posts);
+    dump($videos);
+
+    $post = App\Post::find(1);
+    dump($post->polymorphicComments);
+
+    $video = App\Video::find(1);
+    dump($video->polymorphicComments);
+
+    $comment = App\PolymorphicComment::find(1);
+    $commentable = $comment->commentable;
+    dump($commentable);
+
     return 'done';
 });
 
