@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model {
 
+    // turn mass assignment off
+    protected $guarded = [];
+
     /**
      * Get all of the video's comments.
      *

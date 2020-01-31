@@ -2,10 +2,9 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Video;
 use Faker\Generator as Faker;
 
-$factory->define(Video::class, function (Faker $faker) {
+$factory->define(App\Video::class, function (Faker $faker) {
     return [
         'title' => $faker->word(1),
         'url' => $faker->url,

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model {
     protected $fillable = ['title'];
+    // or can turn mass assignment off
+    // protected $guarded = [];
 
     public function comments() {
         return $this->hasMany('App\Comment');

@@ -260,8 +260,9 @@ Route::get('/polymorphic-one-to-many', function () {
     App\Supplier::truncate();
     App\Post::truncate();
     App\Video::truncate();
-    // create a post
-    // then create many comments for that post
+
+    // create 3 post
+    // then create 5 comments for that post
 
     $posts = factory(App\Post::class, 3)
         ->create()
@@ -272,9 +273,25 @@ Route::get('/polymorphic-one-to-many', function () {
                 );
         });
 
+    // or if you already had a post...this will create a single post with 5 comments
+    // $post->polymorphicComments()
+    //      ->createMany(
+    //         factory(App\PolymorphicComment::class, 5)->make()->toArray()
+    //     );
     //
-    // create a video
-    // then create many comments for that video
+
+    // or create a single comment
+    // $post->polymorphicComments()
+    //      ->create(['body' => 'First Cool Comment']);
+    //
+
+    // let's add another comment to the same post
+    // $post->polymorphicComments()
+    //      ->create(['body' => 'Cool Comment again']);
+    //
+
+    // create 3 video
+    // then create 5 comments for that video
     //
     $videos = factory(App\Video::class, 3)
         ->create()
@@ -302,17 +319,114 @@ Route::get('/polymorphic-one-to-many', function () {
 });
 
 Route::get('/polymorphic-many-to-many', function () {
+    App\Taggable::truncate();
     App\Tag::truncate();
     App\User::truncate();
     App\Country::truncate();
     App\Supplier::truncate();
     App\Post::truncate();
+    App\Video::truncate();
 
-    // video tags
-    factory(App\Tag::class, 'video', 20)->create();
+    // create 20 tags
+    $tags = factory(App\Tag::class, 20)->create();
+
+    // create 20 videos
+    $videos = factory(App\Video::class, 20)
+        ->create()
+        ->each(function ($video) use ($tags) {
+            // Attaching a random number of tags to each video
+            $video->tags()->attach(
+                $tags->random(rand(1, 20))->pluck('id')->toArray()
+            );
+        });
     //
-    // post tags
-    factory(App\Tag::class, 'post', 20)->create();
+    // create 20 posts
+    $posts = factory(App\Post::class, 20)
+        ->create()
+        ->each(function ($post) use ($tags) {
+            // Attaching a random number of tags to each post
+            $post->tags()->attach(
+                $tags->random(rand(1, 20))->pluck('id')->toArray()
+            );
+        });
+
+    // Retrieve all of the tags for post with id of 1
+    $postA = App\Post::find(1);
+    // Retrieve all of the tags for post with id of 2
+    $postB = App\Post::find(2);
+    dump($postA->tags);
+    dump($postB->tags);
+
+    // foreach ($post->tags as $tag) {
+    //     //
+    // }
+    //
+
+    // Retrieve all of the tags for video with id of 1
+    $videoA = App\Video::find(1);
+    // Retrieve all of the tags for video with id of 2
+    $videoB = App\Video::find(2);
+
+    dump($videoA->tags);
+    dump($videoB->tags);
+
+    // retrieve all of the owners of a polymorphic relation from the polymorphic model
+    //      by accessing the name of the method
+    //          that performs the call to the morphByMany()
+    // in other words retrieve all of the videos and posts for a specific tag
+    $tag = App\Tag::find(1);
+    dump($tag->videos);
+    dump($tag->posts);
+    // foreach ($tag->videos as $video) {
+    //     //
+    // }
+
+    // php artisan tinker
+    // Psy Shell v0.9.12 (PHP 7.3.9 — cli) by Justin Hileman
+    // >>> $post = App\Post::first();
+    // => null
+    // >>> $post = factory(App\Post::class)->create();
+    // => App\Post {#3187
+    //      title: "qui",
+    //      user_id: 1,
+    //      updated_at: "2020-01-31 15:38:56",
+    //      created_at: "2020-01-31 15:38:56",
+    //      id: 1,
+    //    }
+    // >>> $post->tags()->create(['name' => 'laravel']);
+    // => App\Tag {#3183
+    //      name: "laravel",
+    //      updated_at: "2020-01-31 15:41:41",
+    //      created_at: "2020-01-31 15:41:41",
+    //      id: 1,
+    //    }
+    // >>> $post->tags()->create(['name' => 'eloquent']);
+    // => App\Tag {#3185
+    //      name: "eloquent",
+    //      updated_at: "2020-01-31 15:45:44",
+    //      created_at: "2020-01-31 15:45:44",
+    //      id: 2,
+    //    }
+    // >>> $video = factory(App\Video::class)->create();
+    // => App\Video {#3246
+    //      title: "illum",
+    //      url: "http://www.quitzon.com/",
+    //      updated_at: "2020-01-31 15:47:34",
+    //      created_at: "2020-01-31 15:47:34",
+    //      id: 4,
+    //    }
+    // >>>
+    // >>> $video->tags()->create(['name' => 'php']);
+    // => App\Tag {#3152
+    //      name: "php",
+    //      updated_at: "2020-01-31 15:50:50",
+    //      created_at: "2020-01-31 15:50:50",
+    //      id: 3,
+    //    }
+    //
+    //  now lets attach the laravel tag which has an id of 1 to the video
+    // >>> $video->tags()->attach(1);
+    // => null
 
     return 'done';
 });

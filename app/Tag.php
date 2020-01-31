@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model {
 
+    // turn mass assignment off
+    protected $guarded = [];
+
     /**
      * Get all of the posts that are assigned this tag.
      *
