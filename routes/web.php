@@ -31,6 +31,7 @@ Route::get('/collection-chunk', 'CollectionController@chunk');
  *
  * The following route closures test the code that implement relationships
  * https://laravel.com/docs/master/eloquent-relationships
+ * https://laravel-news.com/learn-to-use-model-factories-in-laravel-5-1
  *         see laravel documentation above for more details on how to use relationships
  *         Each route will
  *             first remove all data in the related tables
