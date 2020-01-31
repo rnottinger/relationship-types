@@ -78,6 +78,8 @@ class User extends Authenticatable {
 
     /**
      * Get the user's image.
+     *
+     * used in the one-to-one polymorphic relation
      */
     public function image() {
         return $this->morphOne('App\Image', 'imageable');

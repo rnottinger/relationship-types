@@ -1,3 +1,25 @@
+- Commands History
+
+`php artisan make:model Taggable`
+Model created successfully.
+`php artisan make:factory TaggableFactory`
+Factory created successfully.
+
+`php artisan make:migration create_taggables_table --table=taggables`
+Created Migration: 2020_01_31_103241_create_taggables_table
+`php artisan make:migration create_taggables_table --create=taggables`
+Created Migration: 2020_01_31_103708_create_taggables_table
+`php artisan migrate`
+Migrating: 2020_01_30_203101_create_polymorphic_comments_table
+Migrated:  2020_01_30_203101_create_polymorphic_comments_table (0.01 seconds)
+Migrating: 2020_01_31_102920_add_name_to_videos_table
+Migrated:  2020_01_31_102920_add_name_to_videos_table (0.01 seconds)
+Migrating: 2020_01_31_103030_create_tags_table
+Migrated:  2020_01_31_103030_create_tags_table (0 seconds)
+Migrating: 2020_01_31_103708_create_taggables_table
+Migrated:  2020_01_31_103708_create_taggables_table (0 seconds)
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">

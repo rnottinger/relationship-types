@@ -302,6 +302,18 @@ Route::get('/polymorphic-one-to-many', function () {
 });
 
 Route::get('/polymorphic-many-to-many', function () {
+    App\Tag::truncate();
+    App\User::truncate();
+    App\Country::truncate();
+    App\Supplier::truncate();
+    App\Post::truncate();
+
+    // video tags
+    factory(App\Tag::class, 'video', 20)->create();
+    //
+    // post tags
+    factory(App\Tag::class, 'post', 20)->create();
+
     return 'done';
 });
 
