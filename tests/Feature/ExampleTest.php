@@ -11,7 +11,7 @@ class ExampleTest extends TestCase {
      * @return void
      */
     public function testBasicTest() {
-        $response = $this->get('/');
+        $response = $this->get('/'); // gives us back a larave/framework/src/illuminate/Testing/TestResponse object
 
         $response->assertStatus(200);
         $this->assertTrue(false);
