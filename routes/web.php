@@ -12,7 +12,20 @@
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    $name = request('name');
+
+    return view('test', [
+        'name' => $name,
+    ]);
+
+    // return $name;  // will allow users to execute any script in the browser
+
+    // return [
+    //     'foo' => 'bar',
+    //     'boom' => 'legit',
+    // ];
+
+    // return view('welcome');
 });
 
 Route::get('/instantiation', 'MathController@instantiation');

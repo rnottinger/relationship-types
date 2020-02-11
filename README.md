@@ -12,6 +12,59 @@
 
 ```bash
 
+php -v
+PHP 7.4.2 (cli) (built: Jan 22 2020 06:30:58) ( NTS )
+Copyright (c) The PHP Group
+Zend Engine v3.4.0, Copyright (c) Zend Technologies
+    with Zend OPcache v7.4.2, Copyright (c), by Zend Technologies
+
+
+
+
+
+
+
+
+
+
+brew search mysql
+==> Formulae
+automysqlbackup                  mysql-client                     mysql-connector-c++@1.1          mysql@5.6
+mysql                            mysql-client@5.7                 mysql-sandbox                    mysql@5.7 ✔
+mysql++                          mysql-connector-c++              mysql-search-replace             mysqltuner
+
+==> Casks
+mysql-connector-python                      mysql-utilities                             navicat-for-mysql
+mysql-shell ✔                               mysqlworkbench                              sqlpro-for-mysql    
+
+
+
+
+
+
+
+
+
+composer
+   ______
+  / ____/___  ____ ___  ____  ____  ________  _____
+ / /   / __ \/ __ `__ \/ __ \/ __ \/ ___/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ (__  )  __/ /
+\____/\____/_/ /_/ /_/ .___/\____/____/\___/_/
+                    /_/
+Composer version 1.9.2 2020-01-14 16:30:31
+
+
+
+
+
+
+
+
+Relationships
+
+
+
 php artisan make:model Taggable
 Model created successfully.
 
