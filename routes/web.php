@@ -25,25 +25,31 @@ Route::get('/', function () {
     //     'boom' => 'legit',
     // ];
 
-    // return view('welcome');
+    // return view('welcome');   {{!! <p><a href="{{url("/links")}}'">Go Back</a></p> !!}}
+});
+
+Route::get('/links', function () {
+    return view('relationships.links');
 });
 
 Route::get('/instantiation', 'MathController@instantiation');
 
 Route::get('/telescope-examples', 'TScopeController@examples');
 
-Route::get('/links', 'CollectionController@links')->name('links');
+// Route::get('/links', 'CollectionController@links')->name('links');
 
 Route::get('/collection-all', function () {
     dump(
         collect([1, 2, 3])->all()
     );
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 Route::get('/collection-average', function () {
     dump(
         collect([1, 2, 3])->average()
     );
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 Route::get('/collection-avg', function () {
@@ -58,6 +64,7 @@ Route::get('/collection-avg', function () {
     dump(
         $average
     );
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 Route::get('/collection-chunk', function () {
@@ -67,6 +74,7 @@ Route::get('/collection-chunk', function () {
     dump(
         $chunks->toArray()
     );
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 /**
@@ -82,10 +90,6 @@ Route::get('/collection-chunk', function () {
  *             then use the relationships to output related data
  */
 
-Route::get('/links', function () {
-    return view('relationships.links');
-});
-
 Route::get('/one-to-one', function () {
     App\Phone::truncate();
     App\User::truncate();
@@ -98,7 +102,7 @@ Route::get('/one-to-one', function () {
     dump($phone);
     dump($phone->user); // use the inverse of the hasOne... user() method belongTo() on the Post model
 
-    return 'done';
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 Route::get('/one-to-many', function () {
@@ -130,7 +134,7 @@ Route::get('/one-to-many', function () {
         }
     }
 
-    return 'done';
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 Route::get('/many-to-many', function () {
@@ -160,7 +164,7 @@ Route::get('/many-to-many', function () {
         }
     }
 
-    return 'done';
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 Route::get('/has-one-through', function () {
@@ -177,7 +181,7 @@ Route::get('/has-one-through', function () {
     dump(
         $supplier->userHistory// use the userHistory() method hasOneThrough relationship on the Supplier Model
     );
-    return 'done';
+    return '<p><a href="links">Go Back</a></p>';
 
     // php artisan tinker
     // Psy Shell v0.9.12 (PHP 7.3.9 — cli) by Justin Hileman
@@ -266,7 +270,7 @@ Route::get('/has-many-through', function () {
         );
     }
 
-    return 'done';
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 // $users = factory(App\User::class, 3)->create()->each(function ($user) { $user->posts()->createMany( factory(App\Post::class, 5)->make()->toArray() );  });
@@ -294,7 +298,7 @@ Route::get('/polymorphic-one-to-one', function () {
 
     dump($imageable);
 
-    return 'done';
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 Route::get('/polymorphic-one-to-many', function () {
@@ -359,7 +363,7 @@ Route::get('/polymorphic-one-to-many', function () {
     $commentable = $comment->commentable;
     dump($commentable);
 
-    return 'done';
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 Route::get('/polymorphic-many-to-many', function () {
@@ -472,31 +476,31 @@ Route::get('/polymorphic-many-to-many', function () {
     // >>> $video->tags()->attach(1);
     // => null
 
-    return 'done';
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 Route::get('/polymorphic-types-custom', function () {
-    return 'done';
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 // Querying Relations
 
 Route::get('/methods-vs-dynamic-properties', function () {
-    return 'done';
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 Route::get('/query-existence', function () {
-    return 'done';
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 Route::get('/query-absence', function () {
-    return 'done';
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 Route::get('/query-polymorphic', function () {
-    return 'done';
+    return '<p><a href="links">Go Back</a></p>';
 });
 
 Route::get('/counting-related-models', function () {
-    return 'done';
+    return '<p><a href="links">Go Back</a></p>';
 });

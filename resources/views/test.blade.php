@@ -35,6 +35,8 @@
 <!--
     instead let's escape it first
     <h1><?=htmlspecialchars($name, ENT_QUOTES)?></h1>
+
+    rather than echoing values
 -->
 
 <!-- instead we can just surround our variable with curly braces
@@ -42,6 +44,13 @@
         storage/framework/views/hash_view.php is the compiled file that is actually sent to the browser
 -->
     <h1>{{$name}}</h1>
+    <!-- there is 2 variants here
+            in this case we are escaping the $name variable
+            however we can also do {{!! $name !!}} which will not escape the data
+            user can run scripts from url
+            for example: if you are fetching html from the database
+
+     -->
 
 </body>
 </html>

@@ -6,6 +6,19 @@
 	+ [Polymorphic Relationships Youtube](https://www.youtube.com/watch?v=C7T1689IvPQ)
 	+ [Laravel API](https://laravel.com/api/master/index.html)
 
+
+
+- Packages
+	+ [Collision](https://github.com/nunomaduro/collision#phpunit-adapter)
+		* a package designed 
+			- to give you beautiful error reporting 
+			- when interacting with your app 
+				+ through the command line.
+		* [LN article](https://laravel-news.com/using-the-collision-phpunit-listener-with-laravel)
+
+
+
+
 - Commands History
 
  
