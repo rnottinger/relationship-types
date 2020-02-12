@@ -32,12 +32,42 @@ Route::get('/instantiation', 'MathController@instantiation');
 
 Route::get('/telescope-examples', 'TScopeController@examples');
 
-Route::get('/links', 'CollectionController@links');
+Route::get('/links', 'CollectionController@links')->name('links');
 
-Route::get('/collection-all', 'CollectionController@all');
-Route::get('/collection-average', 'CollectionController@average');
-Route::get('/collection-avg', 'CollectionController@avg');
-Route::get('/collection-chunk', 'CollectionController@chunk');
+Route::get('/collection-all', function () {
+    dump(
+        collect([1, 2, 3])->all()
+    );
+});
+
+Route::get('/collection-average', function () {
+    dump(
+        collect([1, 2, 3])->average()
+    );
+});
+
+Route::get('/collection-avg', function () {
+    // $average = collect([
+    //      ['foo' => 10],
+    //      ['foo' => 10],
+    //      ['foo' => 20],
+    //      ['foo' => 40]
+    // ])->avg('foo');
+
+    $average = collect([1, 1, 2, 4])->avg();
+    dump(
+        $average
+    );
+});
+
+Route::get('/collection-chunk', function () {
+    $collection = collect([1, 2, 3, 4, 5, 6, 7]);
+    $chunks = $collection->chunk(4);
+
+    dump(
+        $chunks->toArray()
+    );
+});
 
 /**
  * Eloquent: Relationships
