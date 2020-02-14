@@ -24,6 +24,12 @@
     </style>
 </head>
 <body>
+    <h1>Try out the following query strings</h1>
+    <textarea>
+        ?name=Richard
+        ?name=<script>alert('hello');</script>
+    </textarea>
+
 <!--
 
     laravel6.test/?name=<script>alert('hello');</script>;
@@ -51,6 +57,6 @@
             for example: if you are fetching html from the database
 
      -->
-
+    <p><a href="/">Go Back</a></p>
 </body>
 </html>

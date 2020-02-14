@@ -11,13 +11,14 @@
 |
  */
 
-Route::get('/', function () {
+Route::get('/querystring-demo', function () {
     $name = request('name');
 
     return view('test', [
         'name' => $name,
     ]);
 
+    return;
     // return $name;  // will allow users to execute any script in the browser
 
     // return [
@@ -25,19 +26,18 @@ Route::get('/', function () {
     //     'boom' => 'legit',
     // ];
 
-    // return view('welcome');   {{!! <p><a href="{{url("/links")}}'">Go Back</a></p> !!}}
+    // return view('welcome');   {{!! <p><a href="{{url("//")}}'">Go Back</a></p> !!}}
 });
 
-Route::get('/links', function () {
+Route::get('/', function () {
 
     $collectionMethods = [
-        'demo',
-        'macroable',
         'all',
         'average',
         'avg',
         'chunk',
         'collapse',
+        'combine',
         'collect',
         'concat',
         'contains',
@@ -57,6 +57,94 @@ Route::get('/links', function () {
         'except',
         'filter',
         'first',
+        'firstWhere',
+        'flatMap',
+        'flatten',
+        'flip',
+        'forget',
+        'forPage',
+        'get',
+        'groupBy',
+        'has',
+        'implode',
+        'intersect',
+        'intersectByKeys',
+        'isEmpty',
+        'isNotEmpty',
+        'keyBy',
+        'keys',
+        'last',
+        'macro',
+        'make',
+        'map',
+        'mapInto',
+        'mapSpread',
+        'mapToGroups',
+        'mapWithKeys',
+        'max',
+        'median',
+        'merge',
+        'mergeRecursive',
+        'min',
+        'mode',
+        'nth',
+        'only',
+        'pad',
+        'partition',
+        'pipe',
+        'pluck',
+        'pop',
+        'prepend',
+        'pull',
+        'push',
+        'put',
+        'random',
+        'reduce',
+        'reject',
+        'replace',
+        'replaceRecursive',
+        'reverse',
+        'search',
+        'shift',
+        'shuffle',
+        'skip',
+        'slice',
+        'some',
+        'sort',
+        'sortBy',
+        'sortByDesc',
+        'sortDesc',
+        'sortKeys',
+        'sortKeysDesc',
+        'splice',
+        'split',
+        'sum',
+        'take',
+        'tap',
+        'times',
+        'toArray',
+        'toJson',
+        'transform',
+        'union',
+        'unique',
+        'uniqueStrict',
+        'unless',
+        'unlessEmpty',
+        'unwrap',
+        'values',
+        'when',
+        'whenEmpty',
+        'whenNotEmpty',
+        'where',
+        'whereStrict',
+        'whereBetween',
+        'whereIn',
+        'whereInStrict',
+        'whereInstanceOf',
+        'whereNotBetween',
+        'whereNotInStrict',
+        'wrap',
+        'zip',
     ];
 
     return view('relationships.links', compact('collectionMethods'));
@@ -66,9 +154,7 @@ Route::get('/instantiation', 'MathController@instantiation');
 
 Route::get('/telescope-examples', 'TScopeController@examples');
 
-// Route::get('/links', 'CollectionController@links')->name('links');
-
-Route::get('/collection-demo', function () {
+Route::get('/collection-chaining', function () {
 
     dump(
         $collection = collect(['taylor', 'abigail', null])->map(function ($name) {
@@ -83,7 +169,7 @@ Route::get('/collection-demo', function () {
     $desc .= '<li>to create a new collection instance from the array,</li>';
     $desc .= '<li>run the strtoupper function on each element,</li>';
     $desc .= '<li>and then remove all empty elements</li></ul></p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
     return $desc;
 });
@@ -101,7 +187,7 @@ Route::get('/collection-macroable', function () {
         $upper = $collection->toUpper()
     );
     $desc = '<p><pre>// ["FIRST", "SECOND"]</pre></p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
     return $desc;
 });
@@ -111,7 +197,7 @@ Route::get('/collection-all', function () {
         collect([1, 2, 3])->all()
     );
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
     return $desc;
 });
@@ -121,7 +207,7 @@ Route::get('/collection-average', function () {
         collect([1, 2, 3])->average()
     );
     $desc = '<p>Get the average value of a given key.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
@@ -138,7 +224,7 @@ Route::get('/collection-avg', function () {
         $average
     );
     $desc = '<p>Get the average value of a given key.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
@@ -149,8 +235,9 @@ Route::get('/collection-chunk', function () {
     dump(
         $chunks->toArray()
     );
+
     $desc = '<p>Chunk the collection into chunks of the given size.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
@@ -161,13 +248,411 @@ Route::get('/collection-collapse', function () {
     dump(
         $collapsed->all()
     );
+
     $desc = '<p>The collapse method collapses a collection of arrays into a single, flat collection</p>';
     $desc .= '<p>// [1, 2, 3, 4, 5, 6, 7, 8, 9]</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
-/**
+Route::get('/collection-combine', function () {
+    $collection = collect(['name', 'age']);
+    $combined = $collection->combine(['George', 29]);
+
+    dump(
+        $combined->all()
+    );
+
+    $desc = '<p>The combine method combines the values of the collection, as keys, with the values of another array or collection:</p>';
+    $desc .= '<p>// ["name" => "George", "age" => 29]</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-collect', function () {
+    $collectionA = collect([1, 2, 3]);
+
+    $collectionB = $collectionA->collect();
+
+    // [1, 2, 3]
+
+    $lazyCollection = Illuminate\Support\LazyCollection::make(function () {
+        yield 1;
+        yield 2;
+        yield 3;
+    });
+
+    $collection = $lazyCollection->collect();
+
+    // [1, 2, 3]
+
+    dump(
+        $collectionB->all()
+    );
+
+    dump(
+        get_class($collection),
+        $collection->all()
+    );
+
+    $desc = '<p>The collect method returns a new Collection instance with the items currently in the collection:</p>';
+    $desc .= '<p>// [1, 2, 3]</p>';
+    $desc .= 'The collect method is primarily useful for converting lazy collections into standard Collection instances:<br>';
+    $desc .= 'The collect method is especially useful when you have an instance of Enumerable and need a non-lazy collection instance. <br>Since collect() is part of the Enumerable contract, you can safely use it to get a Collection instance.';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-concat', function () {
+    $collection = collect(['John Doe']);
+
+    $concatenated = $collection->concat(['Jane Doe'])->concat(['name' => 'Johnny Doe']);
+
+    dump(
+        $concatenated->all()
+    );
+
+    $desc = '<p>The concat method appends the given array or collection values onto the end of the collection:</p>';
+    $desc .= '<p>// ["John Doe", "Jane Doe", "Johnny Doe"]</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-contains', function () {
+    $collection = collect(['name' => 'Desk', 'price' => 100]);
+
+    dump(
+        $collection->contains('Desk') // true
+    );
+
+    dump(
+        $collection->contains('New York') // false
+    );
+
+    $collection = collect([
+        ['product' => 'Desk', 'price' => 200],
+        ['product' => 'Chair', 'price' => 100],
+    ]);
+
+    dump(
+        $collection->contains('product', 'Bookcase') // false
+    );
+
+    $collection = collect([1, 2, 3, 4, 5]);
+    dump(
+        $collection->contains(function ($value, $key) {
+            return $value > 5;
+        }) // false
+    );
+
+    $desc = '<p>The contains method determines whether the collection contains a given item:</p>';
+    $desc .= '<p>// true false</p>';
+    $desc .= '<p>You may also pass a key / value pair to the contains method, which will determine if the given pair exists in the collection:</p>';
+    $desc .= '<p>Finally, you may also pass a callback to the contains method to perform your own truth test:</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-count', function () {
+    $collection = collect([1, 2, 3, 4]);
+
+    dump(
+        $collection->count() // 4
+    );
+
+    $desc = '<p>The count method returns the total number of items in the collection:</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-countBy', function () {
+
+    $collection = collect([1, 2, 2, 2, 3]);
+
+    $counted = $collection->countBy();
+
+    dump($counted->all());
+
+    // [1 => 1, 2 => 3, 3 => 1]
+
+    $collection = collect(['alice@gmail.com', 'bob@yahoo.com', 'carlos@gmail.com']);
+
+    $counted = $collection->countBy(function ($email) {
+        return substr(strrchr($email, "@"), 1);
+    });
+
+    // ['gmail.com' => 2, 'yahoo.com' => 1]
+
+    dump(
+        $counted->all()
+    );
+
+    $desc = '<p>The countBy method counts the occurrences of values in the collection.<br> By default, the method counts the occurrences of every element:</p>';
+    $desc .= '<p>However, you pass a callback to the countBy method to count all items by a custom value:</p>';
+    $desc .= '<p>// [1 => 1, 2 => 3, 3 => 1]</p>';
+    $desc .= '<p>// ["gmail.com" => 2, "yahoo.com" => 1]</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-crossJoin', function () {
+
+    $collection = collect([1, 2]);
+
+    $matrix = $collection->crossJoin(['a', 'b']);
+
+    dump(
+        $matrix->all()
+    );
+
+    /*
+    [
+    [1, 'a'],
+    [1, 'b'],
+    [2, 'a'],
+    [2, 'b'],
+    ]
+     */
+
+    $collection = collect([1, 2]);
+
+    $matrix = $collection->crossJoin(['a', 'b'], ['I', 'II']);
+
+    dump(
+        $matrix->all()
+    );
+
+    /*
+    [
+    [1, 'a', 'I'],
+    [1, 'a', 'II'],
+    [1, 'b', 'I'],
+    [1, 'b', 'II'],
+    [2, 'a', 'I'],
+    [2, 'a', 'II'],
+    [2, 'b', 'I'],
+    [2, 'b', 'II'],
+    ]
+     */
+
+    $desc = '<p>The crossJoin method cross joins the collections values among the given arrays or collections, returning a Cartesian product with all possible permutations:</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-dd', function () {
+    $collection = collect(['John Doe', 'Jane Doe']);
+
+    $collection->dd();
+
+    /*
+    Collection {
+    #items: array:2 [
+    0 => "John Doe"
+    1 => "Jane Doe"
+    ]
+    }
+     */
+
+// this won't execute because of dd() above stops execution
+    dump(
+        $collection->count() // 4
+    );
+
+    $desc = '<p>The dd method dumps the collections items and ends execution of the script:</p>';
+    $desc .= '<p>If you do not want to stop executing the script, use the dump method instead.</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-diff', function () {
+
+    $collection = collect([1, 2, 3, 4, 5]);
+
+    $diff = $collection->diff([2, 4, 6, 8]);
+
+    dump($diff->all()); // [1, 3, 5]
+
+    $desc = '<p>The diff method compares the collection against another collection or a plain PHP array based on its values. This method will return the values in the original collection that are not present in the given collection:</p>';
+    $desc .= '<p>This methods behavior is modified when using Eloquent Collections.</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-diffAssoc', function () {
+
+    $collection = collect([
+        'color' => 'orange',
+        'type' => 'fruit',
+        'remain' => 6,
+    ]);
+
+    $diff = $collection->diffAssoc([
+        'color' => 'yellow',
+        'type' => 'fruit',
+        'remain' => 3,
+        'used' => 6,
+    ]);
+
+    dump($diff->all());
+
+// ['color' => 'orange', 'remain' => 6]
+
+    $desc = '<p>The diffAssoc method compares the collection against another collection or a plain PHP array based on its keys and values. </p>';
+    $desc .= '<p>This method will return the key / value pairs in the original collection that are not present in the given collection:</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-diffKeys', function () {
+
+    $collection = collect([
+        'one' => 10,
+        'two' => 20,
+        'three' => 30,
+        'four' => 40,
+        'five' => 50,
+    ]);
+
+    $diff = $collection->diffKeys([
+        'two' => 2,
+        'four' => 4,
+        'six' => 6,
+        'eight' => 8,
+    ]);
+
+    dump(
+        $diff->all()
+    );
+
+// ['one' => 10, 'three' => 30, 'five' => 50]
+
+    $desc = '<p>The diffKeys method compares the collection against another collection or a plain PHP array based on its keys. This method will return the key / value pairs in the original collection that are not present in the given collection:</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-dump', function () {
+
+    $collection = collect(['John Doe', 'Jane Doe']);
+
+    $collection->dump();
+
+    /*
+    Collection {
+    #items: array:2 [
+    0 => "John Doe"
+    1 => "Jane Doe"
+    ]
+    }
+     */
+
+    $desc = '<p>The dump method dumps the collections items:</p>';
+    $desc .= '<p>If you want to stop executing the script after dumping the collection, use the dd method instead.</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-duplicates', function () {
+
+    $collection = collect(['a', 'b', 'a', 'c', 'b']);
+
+    dump(
+        $collection->duplicates()
+    );
+
+    // [2 => 'a', 4 => 'b']
+
+    $employees = collect([
+        ['email' => 'abigail@example.com', 'position' => 'Developer'],
+        ['email' => 'james@example.com', 'position' => 'Designer'],
+        ['email' => 'victoria@example.com', 'position' => 'Developer'],
+    ]);
+
+    dump(
+        $employees->duplicates('position')
+    );
+
+    // [2 => 'Developer']
+
+    $desc = '<p>The duplicates method retrieves and returns duplicate values from the collection:</p>';
+    $desc .= '<p>If the collection contains arrays or objects, you can pass the key of the attributes that you wish to check for duplicate values:</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-duplicatesStrict', function () {
+    $desc = '<p>This method has the same signature as the duplicates method. however, all values are compared using "strict" comparisons.</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-each', function () {
+
+    $collection = collect(['a', 'b', 'a', 'c', 'b']);
+
+    $collection->each(function ($item, $key) {
+        //
+    });
+
+    $collection->each(function ($item, $key) {
+        /* some condition */
+        if (true) {
+            return false;
+        }
+    });
+
+    $desc = '<p>The each method iterates over the items in the collection and passes each item to a callback:</p>';
+    $desc .= '<p>If you would like to stop iterating through the items, you may return false from your callback:</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-eachSpread', function () {
+
+    $collection = collect([['John Doe', 35], ['Jane Doe', 33]]);
+
+    $collection->eachSpread(function ($name, $age) {
+        //
+    });
+
+    $collection->eachSpread(function ($name, $age) {
+        return false;
+    });
+
+    $desc = '<p>The eachSpread method iterates over the collections items, passing each nested item value into the given callback:</p>';
+    $desc .= '<p>You may stop iterating through the items by returning false from the callback:</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-every', function () {
+
+    dump(
+        collect([1, 2, 3, 4])->every(function ($value, $key) {
+            return $value > 2;
+        })
+    );
+
+// false
+
+    $collection = collect([]);
+
+    dump(
+        $collection->every(function ($value, $key) {
+            return $value > 2;
+        })
+    );
+
+// true
+
+    $desc = '<p>The every method may be used to verify that all elements of a collection pass a given truth test:</p>';
+    $desc .= '<p>If the collection is empty, every will return true:</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    return $desc;
+});
+
+/*
  * Eloquent: Relationships
  *
  * The following route closures test the code that implement relationships
@@ -193,7 +678,7 @@ Route::get('/one-to-one', function () {
     dump($phone->user); // use the inverse of the hasOne... user() method belongTo() on the Post model
 
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
@@ -227,7 +712,7 @@ Route::get('/one-to-many', function () {
     }
 
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
@@ -259,7 +744,7 @@ Route::get('/many-to-many', function () {
     }
 
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
@@ -278,7 +763,7 @@ Route::get('/has-one-through', function () {
         $supplier->userHistory// use the userHistory() method hasOneThrough relationship on the Supplier Model
     );
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 
     // php artisan tinker
@@ -369,7 +854,7 @@ Route::get('/has-many-through', function () {
     }
 
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
@@ -399,7 +884,7 @@ Route::get('/polymorphic-one-to-one', function () {
     dump($imageable);
 
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
@@ -466,7 +951,7 @@ Route::get('/polymorphic-one-to-many', function () {
     dump($commentable);
 
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
@@ -581,13 +1066,13 @@ Route::get('/polymorphic-many-to-many', function () {
     // => null
 
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
 Route::get('/polymorphic-types-custom', function () {
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
@@ -595,30 +1080,34 @@ Route::get('/polymorphic-types-custom', function () {
 
 Route::get('/methods-vs-dynamic-properties', function () {
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
 Route::get('/query-existence', function () {
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
 Route::get('/query-absence', function () {
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
 Route::get('/query-polymorphic', function () {
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
 
 Route::get('/counting-related-models', function () {
     $desc = '<p>Get all of the items in the collection.</p>';
-    $desc .= '<p><a href="links">Go Back</a></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
     return $desc;
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
