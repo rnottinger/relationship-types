@@ -29,7 +29,37 @@ Route::get('/', function () {
 });
 
 Route::get('/links', function () {
-    return view('relationships.links');
+
+    $collectionMethods = [
+        'demo',
+        'macroable',
+        'all',
+        'average',
+        'avg',
+        'chunk',
+        'collapse',
+        'collect',
+        'concat',
+        'contains',
+        'count',
+        'countBy',
+        'crossJoin',
+        'dd',
+        'diff',
+        'diffAssoc',
+        'diffKeys',
+        'dump',
+        'duplicates',
+        'duplicatesStrict',
+        'each',
+        'eachSpread',
+        'every',
+        'except',
+        'filter',
+        'first',
+    ];
+
+    return view('relationships.links', compact('collectionMethods'));
 });
 
 Route::get('/instantiation', 'MathController@instantiation');
@@ -38,18 +68,61 @@ Route::get('/telescope-examples', 'TScopeController@examples');
 
 // Route::get('/links', 'CollectionController@links')->name('links');
 
+Route::get('/collection-demo', function () {
+
+    dump(
+        $collection = collect(['taylor', 'abigail', null])->map(function ($name) {
+            return strtoupper($name);
+        })
+            ->reject(function ($name) {
+                return empty($name);
+            })
+    );
+
+    $desc = '<p><ul><li>We will use the collect helper</li>';
+    $desc .= '<li>to create a new collection instance from the array,</li>';
+    $desc .= '<li>run the strtoupper function on each element,</li>';
+    $desc .= '<li>and then remove all empty elements</li></ul></p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
+    return $desc;
+});
+
+Route::get('/collection-macroable', function () {
+    Illuminate\Support\Collection::macro('toUpper', function () {
+        return $this->map(function ($value) {
+            return Illuminate\Support\Str::upper($value);
+        });
+    });
+
+    $collection = collect(['first', 'second']);
+
+    dump(
+        $upper = $collection->toUpper()
+    );
+    $desc = '<p><pre>// ["FIRST", "SECOND"]</pre></p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
+    return $desc;
+});
+
 Route::get('/collection-all', function () {
     dump(
         collect([1, 2, 3])->all()
     );
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
+    return $desc;
 });
 
 Route::get('/collection-average', function () {
     dump(
         collect([1, 2, 3])->average()
     );
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get the average value of a given key.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 Route::get('/collection-avg', function () {
@@ -64,7 +137,9 @@ Route::get('/collection-avg', function () {
     dump(
         $average
     );
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get the average value of a given key.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 Route::get('/collection-chunk', function () {
@@ -74,7 +149,22 @@ Route::get('/collection-chunk', function () {
     dump(
         $chunks->toArray()
     );
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Chunk the collection into chunks of the given size.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-collapse', function () {
+    $collection = collect([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+    $collapsed = $collection->collapse();
+
+    dump(
+        $collapsed->all()
+    );
+    $desc = '<p>The collapse method collapses a collection of arrays into a single, flat collection</p>';
+    $desc .= '<p>// [1, 2, 3, 4, 5, 6, 7, 8, 9]</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 /**
@@ -102,7 +192,9 @@ Route::get('/one-to-one', function () {
     dump($phone);
     dump($phone->user); // use the inverse of the hasOne... user() method belongTo() on the Post model
 
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 Route::get('/one-to-many', function () {
@@ -134,7 +226,9 @@ Route::get('/one-to-many', function () {
         }
     }
 
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 Route::get('/many-to-many', function () {
@@ -164,7 +258,9 @@ Route::get('/many-to-many', function () {
         }
     }
 
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 Route::get('/has-one-through', function () {
@@ -181,7 +277,9 @@ Route::get('/has-one-through', function () {
     dump(
         $supplier->userHistory// use the userHistory() method hasOneThrough relationship on the Supplier Model
     );
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 
     // php artisan tinker
     // Psy Shell v0.9.12 (PHP 7.3.9 — cli) by Justin Hileman
@@ -270,7 +368,9 @@ Route::get('/has-many-through', function () {
         );
     }
 
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 // $users = factory(App\User::class, 3)->create()->each(function ($user) { $user->posts()->createMany( factory(App\Post::class, 5)->make()->toArray() );  });
@@ -298,7 +398,9 @@ Route::get('/polymorphic-one-to-one', function () {
 
     dump($imageable);
 
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 Route::get('/polymorphic-one-to-many', function () {
@@ -363,7 +465,9 @@ Route::get('/polymorphic-one-to-many', function () {
     $commentable = $comment->commentable;
     dump($commentable);
 
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 Route::get('/polymorphic-many-to-many', function () {
@@ -476,31 +580,45 @@ Route::get('/polymorphic-many-to-many', function () {
     // >>> $video->tags()->attach(1);
     // => null
 
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 Route::get('/polymorphic-types-custom', function () {
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 // Querying Relations
 
 Route::get('/methods-vs-dynamic-properties', function () {
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 Route::get('/query-existence', function () {
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 Route::get('/query-absence', function () {
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 Route::get('/query-polymorphic', function () {
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });
 
 Route::get('/counting-related-models', function () {
-    return '<p><a href="links">Go Back</a></p>';
+    $desc = '<p>Get all of the items in the collection.</p>';
+    $desc .= '<p><a href="links">Go Back</a></p>';
+    return $desc;
 });

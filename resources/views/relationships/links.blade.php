@@ -6,11 +6,17 @@
 @section('content')
 	<h1>Collections</h1>
 	<div>
-		<p><a href="{{url("/collection-all")}}">all()</a></p>
-		<p><a href="{{url("/collection-average")}}">average()</a></p>
-		<p><a href="{{url("/collection-avg")}}">avg()</a></p>
-		<p><a href="{{url("/collection-chunk")}}">chunk()</a></p>
-		<p><a href="{{url("/collection-all")}}">all()</a></p>
+		@foreach (collect($collectionMethods)->chunk(3) as $chunk)
+		    <div class="row">
+		        @foreach ($chunk as $collectionMethod)
+					<div class="col-xs-4">
+						<a href="/collection-{{ $collectionMethod }}">
+							{{ $collectionMethod }}
+						</a>
+					</div>
+		        @endforeach
+		    </div>
+		@endforeach
 	</div>
 
 	<hr>
