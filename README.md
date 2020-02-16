@@ -52,11 +52,11 @@
 		* to give you beautiful error reporting 
 			- when interacting with your app 
 				+ through the command line.
-- instead of having to **scroll up** the stack trace 
-	+ after each `phpunit` test
-		* this package will show 
-			- the line where the error occurred
-- [LN article](https://laravel-news.com/using-the-collision-phpunit-listener-with-laravel)
+	+ instead of having to **scroll up** the stack trace 
+		* after each `phpunit` test
+			- this package will show 
+				+ the line where the error occurred
+	+ [LN article](https://laravel-news.com/using-the-collision-phpunit-listener-with-laravel)
 - [Laravel Telescope](https://laravel.com/docs/6.x/telescope)
 	+ `composer require laravel/telescope --dev`
 - [Laravel UI](https://laravel.com/docs/6.x/frontend)
