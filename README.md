@@ -46,6 +46,10 @@
 - [Polymorphic Relationships Youtube](https://www.youtube.com/watch?v=C7T1689IvPQ)
 - [Laravel API](https://laravel.com/api/master/index.html)
 - [Collision](https://laravel-news.com/using-the-collision-phpunit-listener-with-laravel)
+- Testing
+	+ [Testing Laravel](https://laracasts.com/series/phpunit-testing-in-laravel)
+	+ [Building a Laravel App with TDD](https://laracasts.com/series/build-a-laravel-app-with-tdd)
+	+ [Confident Laravel](https://confidentlaravel.com/)
 
 # The Packages I have added in this project
 
