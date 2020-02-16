@@ -12,7 +12,7 @@
 			<p><a href="{{url("/collection-macroable")}}">Collection Macroable</a></p>
 		</div>
 		<div class="container">
-			<h1>Collections</h1>
+			<h1><a href="https://laravel.com/docs/master/collections">Collection Methods</a></h1>
 			@foreach (collect($collectionMethods)->chunk(3) as $chunk)
 			    <div class="row">
 			        @foreach ($chunk as $collectionMethod)
@@ -29,7 +29,7 @@
 		<hr>
 
 		<div class="container">
-			<h1>Eloquent Relationships</h1>
+			<h1><a href="https://laravel.com/docs/master/eloquent-collections">Eloquent Relationships</a></h1>
 			<p><a href="{{url("/one-to-one")}}">one-to-one</a></p>
 			<p><a href="{{url("/one-to-many")}}">one-to-many</a></p>
 			<p><a href="{{url("/many-to-many")}}">many-to-many</a></p>

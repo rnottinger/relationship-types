@@ -198,7 +198,7 @@ Route::get('/collection-all', function () {
     );
     $desc = '<p>Get all of the items in the collection.</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
-    return $desc;
+    $desc .= '<p><a href="/collection-average">Next Method</a></p>';
     return $desc;
 });
 
@@ -208,6 +208,7 @@ Route::get('/collection-average', function () {
     );
     $desc = '<p>Get the average value of a given key.</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-avg">Next Method</a></p>';
     return $desc;
 });
 
@@ -225,6 +226,7 @@ Route::get('/collection-avg', function () {
     );
     $desc = '<p>Get the average value of a given key.</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-chunk">Next Method</a></p>';
     return $desc;
 });
 
@@ -238,6 +240,7 @@ Route::get('/collection-chunk', function () {
 
     $desc = '<p>Chunk the collection into chunks of the given size.</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-collapse">Next Method</a></p>';
     return $desc;
 });
 
@@ -252,6 +255,7 @@ Route::get('/collection-collapse', function () {
     $desc = '<p>The collapse method collapses a collection of arrays into a single, flat collection</p>';
     $desc .= '<p>// [1, 2, 3, 4, 5, 6, 7, 8, 9]</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-combine">Next Method</a></p>';
     return $desc;
 });
 
@@ -266,6 +270,7 @@ Route::get('/collection-combine', function () {
     $desc = '<p>The combine method combines the values of the collection, as keys, with the values of another array or collection:</p>';
     $desc .= '<p>// ["name" => "George", "age" => 29]</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-collect">Next Method</a></p>';
     return $desc;
 });
 
@@ -300,6 +305,7 @@ Route::get('/collection-collect', function () {
     $desc .= 'The collect method is primarily useful for converting lazy collections into standard Collection instances:<br>';
     $desc .= 'The collect method is especially useful when you have an instance of Enumerable and need a non-lazy collection instance. <br>Since collect() is part of the Enumerable contract, you can safely use it to get a Collection instance.';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-concat">Next Method</a></p>';
     return $desc;
 });
 
@@ -315,6 +321,7 @@ Route::get('/collection-concat', function () {
     $desc = '<p>The concat method appends the given array or collection values onto the end of the collection:</p>';
     $desc .= '<p>// ["John Doe", "Jane Doe", "Johnny Doe"]</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-contains">Next Method</a></p>';
     return $desc;
 });
 
@@ -350,6 +357,7 @@ Route::get('/collection-contains', function () {
     $desc .= '<p>You may also pass a key / value pair to the contains method, which will determine if the given pair exists in the collection:</p>';
     $desc .= '<p>Finally, you may also pass a callback to the contains method to perform your own truth test:</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-count">Next Method</a></p>';
     return $desc;
 });
 
@@ -362,6 +370,7 @@ Route::get('/collection-count', function () {
 
     $desc = '<p>The count method returns the total number of items in the collection:</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-countBy">Next Method</a></p>';
     return $desc;
 });
 
@@ -392,6 +401,7 @@ Route::get('/collection-countBy', function () {
     $desc .= '<p>// [1 => 1, 2 => 3, 3 => 1]</p>';
     $desc .= '<p>// ["gmail.com" => 2, "yahoo.com" => 1]</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-crossJoin">Next Method</a></p>';
     return $desc;
 });
 
@@ -437,6 +447,7 @@ Route::get('/collection-crossJoin', function () {
 
     $desc = '<p>The crossJoin method cross joins the collections values among the given arrays or collections, returning a Cartesian product with all possible permutations:</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-dd">Next Method</a></p>';
     return $desc;
 });
 
@@ -462,6 +473,7 @@ Route::get('/collection-dd', function () {
     $desc = '<p>The dd method dumps the collections items and ends execution of the script:</p>';
     $desc .= '<p>If you do not want to stop executing the script, use the dump method instead.</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-diff">Next Method</a></p>';
     return $desc;
 });
 
@@ -476,6 +488,7 @@ Route::get('/collection-diff', function () {
     $desc = '<p>The diff method compares the collection against another collection or a plain PHP array based on its values. This method will return the values in the original collection that are not present in the given collection:</p>';
     $desc .= '<p>This methods behavior is modified when using Eloquent Collections.</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-diffAssoc">Next Method</a></p>';
     return $desc;
 });
 
@@ -501,6 +514,7 @@ Route::get('/collection-diffAssoc', function () {
     $desc = '<p>The diffAssoc method compares the collection against another collection or a plain PHP array based on its keys and values. </p>';
     $desc .= '<p>This method will return the key / value pairs in the original collection that are not present in the given collection:</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-diffKeys">Next Method</a></p>';
     return $desc;
 });
 
@@ -529,6 +543,7 @@ Route::get('/collection-diffKeys', function () {
 
     $desc = '<p>The diffKeys method compares the collection against another collection or a plain PHP array based on its keys. This method will return the key / value pairs in the original collection that are not present in the given collection:</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-dump">Next Method</a></p>';
     return $desc;
 });
 
@@ -550,6 +565,7 @@ Route::get('/collection-dump', function () {
     $desc = '<p>The dump method dumps the collections items:</p>';
     $desc .= '<p>If you want to stop executing the script after dumping the collection, use the dd method instead.</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-duplicates">Next Method</a></p>';
     return $desc;
 });
 
@@ -578,12 +594,14 @@ Route::get('/collection-duplicates', function () {
     $desc = '<p>The duplicates method retrieves and returns duplicate values from the collection:</p>';
     $desc .= '<p>If the collection contains arrays or objects, you can pass the key of the attributes that you wish to check for duplicate values:</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-duplicatesStrict">Next Method</a></p>';
     return $desc;
 });
 
 Route::get('/collection-duplicatesStrict', function () {
     $desc = '<p>This method has the same signature as the duplicates method. however, all values are compared using "strict" comparisons.</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-each">Next Method</a></p>';
     return $desc;
 });
 
@@ -605,6 +623,7 @@ Route::get('/collection-each', function () {
     $desc = '<p>The each method iterates over the items in the collection and passes each item to a callback:</p>';
     $desc .= '<p>If you would like to stop iterating through the items, you may return false from your callback:</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-eachSpread">Next Method</a></p>';
     return $desc;
 });
 
@@ -623,6 +642,7 @@ Route::get('/collection-eachSpread', function () {
     $desc = '<p>The eachSpread method iterates over the collections items, passing each nested item value into the given callback:</p>';
     $desc .= '<p>You may stop iterating through the items by returning false from the callback:</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-every">Next Method</a></p>';
     return $desc;
 });
 
@@ -649,6 +669,1342 @@ Route::get('/collection-every', function () {
     $desc = '<p>The every method may be used to verify that all elements of a collection pass a given truth test:</p>';
     $desc .= '<p>If the collection is empty, every will return true:</p>';
     $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-except">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-except', function () {
+
+    $collection = collect(['product_id' => 1, 'price' => 100, 'discount' => false]);
+
+    $filtered = $collection->except(['price', 'discount']);
+
+    dump(
+        $filtered->all()
+    );
+
+    // ['product_id' => 1]
+
+    $desc = '<p>The except method returns all items in the collection except for those with the specified keys:</p>';
+    $desc .= '<p>For the inverse of except, see the only method.</p>';
+    $desc .= '<p>This methods behavior is modified when using Eloquent Collections.</p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-filter">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-filter', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-first">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-first', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-firstWhere">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-firstWhere', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-flatMap">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-flatMap', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-flatten">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-flatten', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-flip">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-flip', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-forget">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-forget', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-forPage">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-forPage', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-get">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-get', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-groupBy">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-groupBy', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-has">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-has', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-implode">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-implode', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-intersect">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-intersect', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-intersectByKeys">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-intersectByKeys', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-isEmpty">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-isEmpty', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-isNotEmpty">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-isNotEmpty', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-join">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-join', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-keyBy">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-keyBy', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-keys">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-keys', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-last">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-last', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-macro">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-macro', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-make">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-make', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-map">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-map', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-mapInto">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-mapInto', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-mapSpread">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-mapSpread', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-mapToGroups">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-mapToGroups', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-mapWithKeys">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-mapWithKeys', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-max">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-max', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-median">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-median', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-merge">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-merge', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-mergeRecursive">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-mergeRecursive', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-mint">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-mint', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-mode">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-mode', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-nth">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-nth', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-only">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-only', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-pad">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-pad', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-partition">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-partition', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-pipe">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-pipe', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-pluck">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-pluck', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-pop">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-pop', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-pretend">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-pretend', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-pull">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-pull', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-push">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-push', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-put">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-put', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-random">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-random', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-reduce">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-reduce', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-reject">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-reject', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-replace">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-replace', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-replaceRecursive">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-replaceRecursive', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-reverse">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-reverse', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-search">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-search', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-shift">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-shift', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-shuffle">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-shuffle', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-skip">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-skip', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-slice">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-slice', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-some">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-some', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-sort">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-sort', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-sortBy">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-sortBy', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-sortByDesc">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-sortByDesc', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-sortDesc">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-sortDesc', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-sortkeys">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-sortkeys', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-sortKeysDesc">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-sortKeysDesc', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-splice">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-splice', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-split">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-split', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-sum">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-sum', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-take">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-take', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-tap">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-tap', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-times">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-times', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-toArray">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-toArray', function () {
+
+    // dump(
+
+    // );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-toJson">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-toJson', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-transform">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-transform', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-union">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-union', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-unique">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-unique', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-unique">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-unique', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-uniqueStrict">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-uniqueStrict', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-unless">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-unless', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-unlessEmpty">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-unlessEmpty', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-unlessNotEmpty">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-unlessNotEmpty', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-unwrap">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-unwrap', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-values">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-values', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-when">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-when', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-whenEmpty">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-whenEmpty', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-whenNotEmpty">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-whenNotEmpty', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-where">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-where', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-whereStrict">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-whereStrict', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-whereBetween">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-whereBetween', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-whereIn">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-whereIn', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-whereInStrict">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-whereInStrict', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-whereInstanceOf">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-whereInstanceOf', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-whereNotBetween">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-whereNotBetween', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-whereNotIn">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-whereNotIn', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-whereNotInStrict">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-whereNotInStrict', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-wrap">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-wrap', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">Go Back</a></p>';
+    $desc .= '<p><a href="/collection-zip">Next Method</a></p>';
+    return $desc;
+});
+
+Route::get('/collection-zip', function () {
+
+    dump(
+
+    );
+
+    $desc = '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p></p>';
+    $desc .= '<p><a href="/">This is the last collection method! Go Back</a></p>';
     return $desc;
 });
 
