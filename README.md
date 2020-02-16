@@ -1,44 +1,52 @@
 - [Github Repository](https://github.com/rnottinger/relationship-types)
-- <h2>Description</h2>
-	+ I wanted a single project that I can use to try different laravel features as I'm working my way through the Laravel documentation.
-	+ auth has been implemented using bootstrap
-	+ the project root route '/' contains links to view the output of the laravel features
-	+ `php artisan route:list`
-		* Each **collection method** [documented](https://laravel.com/docs/master/collections) 
-			- has a route closure in `routes/web.php`
-		* Each **relationship type** 
-			- has a route closure in `routes/web.php`
 
-- <h2>Install</h2>
-	+ Prerequisites 
-		* mac users [valet installation](https://laravel.com/docs/6.x/valet#installation)
-			- PHP
-			- [Composer](https://getcomposer.org/)
-			- [Homebrew](https://brew.sh/)
-			- MySQL
-			- [Valet](https://laravel.com/docs/6.x/valet)
-				+ mkdir ~/Sites
-				+ cd ~/Sites
-				+ valet park.
-		* `node` & `npm`
-	+ cd ~/Sites
-	+ git clone https://github.com/rnottinger/relationship-types.git
-	+ composer install
-	+ npm install && npm run dev
-	+ [Database Access](https://laracasts.com/series/laravel-6-from-scratch)
-	+ php artisan migrate
-	+ valet open
+# Description
 
-- <h2>Documentation & Resources</h2>
-	+ [Relationships](https://laravel.com/docs/master/eloquent-relationships)
-	+ [Laravel News Factories](https://laravel-news.com/learn-to-use-model-factories-in-laravel-5-1)
-	+ [Laracasts Polymorphic](https://laracasts.com/lessons/polymorphic-huh)
-	+ [Polymorphic Relationships Youtube](https://www.youtube.com/watch?v=C7T1689IvPQ)
-	+ [Laravel API](https://laravel.com/api/master/index.html)
+- I wanted a single project 
+	+ that I could use to try different laravel features 
+		* as I'm working my way through 
+			- the Laravel documentation.
+- auth has been implemented using bootstrap
+- the project root route '/' contains links 
+	+ to view the output of the laravel features
+- `php artisan route:list`
+	+ Each **collection method** [documented](https://laravel.com/docs/master/collections) 
+		* has a route closure in `routes/web.php`
+	+ Each **relationship type** 
+		* has a route closure in `routes/web.php`
 
+# Install
 
+- Prerequisites 
+	+ mac users [valet installation](https://laravel.com/docs/6.x/valet#installation)
+		- PHP
+		- [Composer](https://getcomposer.org/)
+		- [Homebrew](https://brew.sh/)
+		- MySQL
+		- [Valet](https://laravel.com/docs/6.x/valet)
+			+ mkdir ~/Sites
+			+ cd ~/Sites
+			+ valet park.
+	+ `node` & `npm`
+- `cd ~/Sites`
+- `git clone https://github.com/rnottinger/relationship-types.git`
+- `composer install`
+- `npm install && npm run dev`
+- [Database Access](https://laracasts.com/series/laravel-6-from-scratch)
+- `php artisan migrate`
+- `valet open`
+	+ view in browser
 
-- <h2>Packages used in this project</h2>
+# Documentation & Resources
+
+- [Relationships](https://laravel.com/docs/master/eloquent-relationships)
+- [Laravel News Factories](https://laravel-news.com/learn-to-use-model-factories-in-laravel-5-1)
+- [Laracasts Polymorphic](https://laracasts.com/lessons/polymorphic-huh)
+- [Polymorphic Relationships Youtube](https://www.youtube.com/watch?v=C7T1689IvPQ)
+- [Laravel API](https://laravel.com/api/master/index.html)
+
+# Packages used in this project
+
 	+ [Collision](https://github.com/nunomaduro/collision#phpunit-adapter)
 		* a package designed 
 			- to give you beautiful error reporting 
@@ -52,8 +60,6 @@
 		* `composer require laravel/telescope --dev`
 	+ [Laravel UI](https://laravel.com/docs/6.x/frontend)
 		* `php artisan ui bootstrap --auth`
-
-
 
 ```bash
 
