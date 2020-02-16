@@ -2,13 +2,28 @@
 
 # Description
 
-- I wanted a single project 
-	+ that I could use to try different laravel features 
+- I wanted a single **Laravel project** 
+	+ that I could use to learn how to use different laravel features 
 		* as I'm working my way through 
 			- the Laravel documentation.
+	+ I am attempting to focus on each feature at a time
+		* therefore most of the code is as basic as possible 
+			- to demo the specific feature
+			- or describe the workflow 
+				+ to use the specific feature
+- This project does not attempt to focus on frontend development
+	+ only minimum basic frontend development will be implemented using bootstrap framework 
+- I accept no originality within this **Laravel project**
+	+ The majority of the content was copied directly from the Laravel Documentation
+	+ and is only used for demonstrating & learning purposes 
+		* Its cool with me if you fork this repo, copy any code, etc. 
+
+# Review
+
 - auth has been implemented using bootstrap
-- the project root route '/' contains links 
-	+ to view the output of the laravel features
+- the **project root** route '/' contains links 
+	+ to view the output 
+		* of specific laravel features
 - `php artisan route:list`
 	+ Each **collection method** [documented](https://laravel.com/docs/master/collections) 
 		* has a route closure in `routes/web.php`
@@ -24,14 +39,17 @@
 		- [Homebrew](https://brew.sh/)
 		- MySQL
 		- [Valet](https://laravel.com/docs/6.x/valet)
-			+ mkdir ~/Sites
-			+ cd ~/Sites
-			+ valet park.
+			+ `mkdir ~/Sites`
+			+ `cd ~/Sites`
+			+ `valet park`
 	+ `node` & `npm`
 - `cd ~/Sites`
 - `git clone https://github.com/rnottinger/relationship-types.git`
 - `composer install`
 - `npm install && npm run dev`
+- create/configure .env file
+	+ `php artisan key:generate`
+		* will set `APP_KEY`
 - [Database Access](https://laracasts.com/series/laravel-6-from-scratch)
 - `php artisan migrate`
 - `valet open`
