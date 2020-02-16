@@ -39,13 +39,15 @@
 
 # Documentation & Resources
 
+- [Laravel 6 From Scratch](https://laracasts.com/series/laravel-6-from-scratch)
 - [Relationships](https://laravel.com/docs/master/eloquent-relationships)
 - [Laravel News Factories](https://laravel-news.com/learn-to-use-model-factories-in-laravel-5-1)
 - [Laracasts Polymorphic](https://laracasts.com/lessons/polymorphic-huh)
 - [Polymorphic Relationships Youtube](https://www.youtube.com/watch?v=C7T1689IvPQ)
 - [Laravel API](https://laravel.com/api/master/index.html)
+- [Collision](https://laravel-news.com/using-the-collision-phpunit-listener-with-laravel)
 
-# Packages used in this project
+# The Packages I have added in this project
 
 - [Collision](https://github.com/nunomaduro/collision#phpunit-adapter)
 	+ a package designed 
@@ -56,7 +58,6 @@
 		* after each `phpunit` test
 			- this package will show 
 				+ the line where the error occurred
-	+ [LN article](https://laravel-news.com/using-the-collision-phpunit-listener-with-laravel)
 - [Laravel Telescope](https://laravel.com/docs/6.x/telescope)
 	+ `composer require laravel/telescope --dev`
 - [Laravel UI](https://laravel.com/docs/6.x/frontend)
