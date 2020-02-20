@@ -64,6 +64,13 @@
 - [Polymorphic Relationships Youtube](https://www.youtube.com/watch?v=C7T1689IvPQ)
 - [Laravel API](https://laravel.com/api/master/index.html)
 - [Collision](https://laravel-news.com/using-the-collision-phpunit-listener-with-laravel)
+- [larastan](https://github.com/nunomaduro/larastan)
+	+ code static analysis
+	+ alias phpstan="vendor/bin/phpstan"
+	+ `phpstan analyze`
+- [Marketing For Developers](https://devmarketing.xyz/) Justin Jackson
+- [laracon](https://laracon.net/)
+	+ [Schedule](https://laracon.net/#time-table)
 - Testing
 	+ [Testing Laravel](https://laracasts.com/series/phpunit-testing-in-laravel)
 	+ [Building a Laravel App with TDD](https://laracasts.com/series/build-a-laravel-app-with-tdd)
