@@ -57,6 +57,8 @@
 
 # Documentation & Resources
 
+- [DivingLaravel.com](https://divinglaravel.com/)
+- [Laravel Explained](https://laracasts.com/series/laravel-explained)
 - [Unlocking Badges Workshop](https://laracasts.com/series/unlocking-badges-workshop)
 - [What's New in Laravel 6](https://laracasts.com/series/whats-new-in-laravel-6)
 - [Mailcoach](https://mailcoach.app)
