@@ -57,6 +57,10 @@
 
 # Documentation & Resources
 
+- [Unlocking Badges Workshop](https://laracasts.com/series/unlocking-badges-workshop)
+- [What's New in Laravel 6](https://laracasts.com/series/whats-new-in-laravel-6)
+- [Mailcoach](https://mailcoach.app)
+- [Object-Oriented Principles in PHP](https://laracasts.com/series/object-oriented-principles-in-php)
 - [Laravel 6 From Scratch](https://laracasts.com/series/laravel-6-from-scratch)
 - [Relationships](https://laravel.com/docs/master/eloquent-relationships)
 - [Laravel News Factories](https://laravel-news.com/learn-to-use-model-factories-in-laravel-5-1)

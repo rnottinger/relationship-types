@@ -1291,7 +1291,7 @@ Route::get('/collection-mapInto', function () {
          * @param  string  $code
          * @return void
          */
-        function __construct(string $code) {
+        public function __construct(string $code) {
             $this->code = $code;
         }
     }
