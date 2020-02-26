@@ -57,6 +57,24 @@
 
 # Documentation & Resources
 
+- [PHPCS - Code Style checks and enforcement](https://github.com/squizlabs/PHP_CodeSniffer)
+	+ great as a first step 
+		* to get your code style clean
+- [PHPCSFixer - Automated Code Style fixes](https://cs.symfony.com)
+	+ can do a lot of code style fixes automatically for you
+- [PHPStan - Static Analysis tool for PHP](https://github.com/phpstan/phpstan)
+- [larastan](https://github.com/nunomaduro/larastan)
+ 	+ once you get into the refactoring phase
+		* larastan
+	+ code static analysis
+	+ alias phpstan="vendor/bin/phpstan"
+	+ `phpstan analyze`
+- [Psalm - Static Analysis for PHP (from Vimeo)](https://psalm.dev)
+
+- [Rector - Automatic codebase refactoring tool](https://githuib.com/recotorphp/rector)
+- 
+- [PHPUnit - Testing Framework for PHP](https://phpunit.de)
+-
 - [DivingLaravel.com](https://divinglaravel.com/)
 - [Laravel Explained](https://laracasts.com/series/laravel-explained)
 - [Unlocking Badges Workshop](https://laracasts.com/series/unlocking-badges-workshop)
@@ -70,10 +88,7 @@
 - [Polymorphic Relationships Youtube](https://www.youtube.com/watch?v=C7T1689IvPQ)
 - [Laravel API](https://laravel.com/api/master/index.html)
 - [Collision](https://laravel-news.com/using-the-collision-phpunit-listener-with-laravel)
-- [larastan](https://github.com/nunomaduro/larastan)
-	+ code static analysis
-	+ alias phpstan="vendor/bin/phpstan"
-	+ `phpstan analyze`
+
 - [Marketing For Developers](https://devmarketing.xyz/) Justin Jackson
 - [laracon](https://laracon.net/)
 	+ [Schedule](https://laracon.net/#time-table)
