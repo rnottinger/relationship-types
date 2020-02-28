@@ -63,16 +63,21 @@
 - [PHPCSFixer - Automated Code Style fixes](https://cs.symfony.com)
 	+ can do a lot of code style fixes automatically for you
 - [PHPStan - Static Analysis tool for PHP](https://github.com/phpstan/phpstan)
-- [larastan](https://github.com/nunomaduro/larastan)
  	+ once you get into the refactoring phase
-		* larastan
+		* phpstan will make sure that your new code
+			- does what it is meant to do 
+			- especially if your using types
+- [larastan](https://github.com/nunomaduro/larastan)
 	+ code static analysis
 	+ alias phpstan="vendor/bin/phpstan"
 	+ `phpstan analyze`
 - [Psalm - Static Analysis for PHP (from Vimeo)](https://psalm.dev)
 
-- [Rector - Automatic codebase refactoring tool](https://githuib.com/recotorphp/rector)
-- 
+- [Rector - Automatic codebase refactoring tool](https://github.com/rectorphp/rector)
+	+ of you are not using phpstorm
+		* rector has a bunch of utilities
+			- to help refactor stuff
+	+ [getrector.org](https://getrector.org/)
 - [PHPUnit - Testing Framework for PHP](https://phpunit.de)
 -
 - [DivingLaravel.com](https://divinglaravel.com/)
