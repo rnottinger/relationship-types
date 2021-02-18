@@ -11,10 +11,10 @@ class ExampleTest extends TestCase {
      * @return void
      */
     public function testBasicTest() {
-        $response = $this->get('/'); // gives us back a larave/framework/src/illuminate/Testing/TestResponse object
+        $response = $this->get('/'); // gives us back a laravel /framework/src/illuminate/Testing/TestResponse object
 
         $response->assertStatus(200);
-        $this->assertTrue(false);
+        // $this->assertTrue(false);
         // $response->dumpHeaders();
     }
 }

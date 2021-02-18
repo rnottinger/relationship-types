@@ -30,7 +30,7 @@ Route::get('/querystring-demo', function () {
 });
 
 Route::get('/', function () {
-
+    // abort(418);// declaring I'm a teapot.
     $collectionMethods = [
         'all',
         'average',
