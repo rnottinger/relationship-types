@@ -6,6 +6,8 @@
 @section('content')
 	<div>
 		<div class="container">
+			<h1><a href="{{url('/horizon')}}">Horizon</a>
+			<h1><a href="{{url('/telescope')}}">Telescope</a>
 			<h1>Demo Routes</h1>
 			<p><a href="{{url("/querystring-demo")}}">Query String</a></p>
 			<p><a href="{{url("/collection-chaining")}}">Collection Chaining</a></p>
